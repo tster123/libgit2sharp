@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace LibGit2Sharp.Core
 {
@@ -33,8 +31,18 @@ namespace LibGit2Sharp.Core
     internal class git_worktree_add_options
     {
         public uint version = 1;
-        
+
         public int locked;
+
+        public int checkout_existing;
+
+        public IntPtr @ref = IntPtr.Zero;
+
+        public GitCheckoutOpts checkoutOpts = new GitCheckoutOpts
+        {
+            version = 1,
+            checkout_strategy = CheckoutStrategy.GIT_CHECKOUT_SAFE
+        };
     }
 
     [StructLayout(LayoutKind.Sequential)]
